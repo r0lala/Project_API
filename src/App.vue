@@ -1,7 +1,15 @@
 <template>
-    Hello World
+    <CosmeticGallery />
 </template>
 
 <script>
-export default {}
+import CosmeticGallery from '@/components/CosmeticGallery.vue'
+
+export default {
+    name : 'App',
+    components:{
+        CosmeticGallery
+    }
+}
+
 </script>
