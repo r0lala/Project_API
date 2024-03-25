@@ -11,6 +11,7 @@
           <option value="ZABrand">Marque de Z à A</option>
         </select>
         <select v-model="productsSortType" id="cosmetic-sort-type">
+          <option value="all">All</option>
           <option value="blush">Blush</option>
           <option value="bronzer">Bronzer</option>
           <option value="foundation">Foundation</option>
@@ -54,10 +55,18 @@
 
           // const filterType= (a) => a.product_type.toLowerCase().includes(this.productsSortType)
 
+          if(this.productsSortType=="all"){
+            return this.cosmeticData
+            .filter((a)=> a.name.toLowerCase().includes(this.search.toLocaleLowerCase()))
+            .sort((a,b)=> a[field].localeCompare(b[field])*reversed)
+          }
+
           return this.cosmeticData
             .filter((a)=> a.name.toLowerCase().includes(this.search.toLocaleLowerCase()))
             .filter((a) => a.product_type.toLowerCase().includes(this.productsSortType))
             .sort((a,b)=> a[field].localeCompare(b[field])*reversed)
+
+            //faire des vérif avec des if
  
           // const field= ["AZName", "ZAName"].includes(this.productsSortName) ? "name" : "brand"
           // const reversed = ["ZAName", "ZABrand"].includes(this.productsSortName)
@@ -80,7 +89,7 @@
             cosmeticData:[],
             search: "",
             productsSortName: "AZName",
-            productsSortType:""
+            productsSortType:"all"
         }
       },
       created: function(){
