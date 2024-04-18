@@ -1,5 +1,5 @@
 <template>
-  <h1>CosmetIMAC</h1>
+  <Header></Header>
   <div class="CosmeticGallery">
     <GalleryOptions v-model:search="search" v-model:productsSortName="productsSortName" v-model:productsSortType="productsSortType"/>
     <div class="gallery">
@@ -12,11 +12,14 @@
         :image_link="cosmetic.image_link"/>
     </div>
   </div>
+  <Footer></Footer>
 </template>
 
 <script>
     import {getCosmeticData} from '@/services/api/cosmeticRepository'
 
+    import Header from '@/components/Header.vue'
+    import Footer from '@/components/Footer.vue'
     import CosmeticCard from '@/components/CosmeticCard.vue'
     import GalleryOptions from '@/components/GalleryOptions.vue'
     
@@ -24,7 +27,9 @@
       name: 'CosmeticGallery',
       components: {
         CosmeticCard,
-        GalleryOptions
+        GalleryOptions,
+        Header,
+        Footer
       },
 
       computed:{
@@ -67,13 +72,6 @@
     </script>
 
 <style>
-    h1{
-      justify-content: center;
-      font-size: 60px;
-      font-weight: bold;
-      color: aquamarine;
-      text-align: center;
-    }
 
     .text {
       color: v-bind(color);
