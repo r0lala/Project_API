@@ -1,32 +1,10 @@
 <template>
+  <h1>CosmetIMAC</h1>
   <div class="CosmeticGallery">
-    <div class="gallery-options">
-        <input type="text" v-model="search" placeholder="Search a product">
-        <button v-if="search" @click="cleanSearch">Clean</button>
-        <label for="product-sort" id="cosmetic-sort"></label>
-        <select v-model="productsSortName" id="cosmetic-sort">
-          <option value="AZName">Produits de A à Z</option>
-          <option value="ZAName">Produits de Z à A</option>
-          <option value="AZBrand">Marque de A à Z</option>
-          <option value="ZABrand">Marque de Z à A</option>
-        </select>
-        <select v-model="productsSortType" id="cosmetic-sort-type">
-          <option value="all">All</option>
-          <option value="blush">Blush</option>
-          <option value="bronzer">Bronzer</option>
-          <option value="foundation">Foundation</option>
-          <option value="eyebrow">Eyebrow</option>
-          <option value="eyeliner">Eyeliner</option>
-          <option value="eyeshadow">Eyeshadow</option>
-          <option value="lipLiner">Lip Liner</option>
-          <option value="lipstick">Lipstick</option>
-          <option value="mascara">Mascara</option>
-          <option value="nail_polish">NailPolish</option>
-        </select>
-        <button v-on:click="filter">Filtrer</button>
-    </div>
+    <GalleryOptions v-model:search="search" v-model:productsSortName="productsSortName" v-model:productsSortType="productsSortType"/>
     <div class="gallery">
-        <CosmeticCard v-for="cosmetic in cosmeticOrganizedData"
+        <CosmeticCard 
+        v-for="cosmetic in cosmeticOrganizedData"
         :name="cosmetic.name" 
         :product_type="cosmetic.product_type" 
         :brand="cosmetic.brand" 
@@ -40,11 +18,13 @@
     import {getCosmeticData} from '@/services/api/cosmeticRepository'
 
     import CosmeticCard from '@/components/CosmeticCard.vue'
+    import GalleryOptions from '@/components/GalleryOptions.vue'
     
     export default {
       name: 'CosmeticGallery',
       components: {
-        CosmeticCard
+        CosmeticCard,
+        GalleryOptions
       },
 
       computed:{
@@ -52,8 +32,6 @@
 
           const field=["AZName", "ZAName"].includes(this.productsSortName) ? "name" : "brand"
           const reversed =["ZAName", "ZABrand"].includes(this.productsSortName) ? -1 :1
-
-          // const filterType= (a) => a.product_type.toLowerCase().includes(this.productsSortType)
 
           if(this.productsSortType=="all"){
             return this.cosmeticData
@@ -65,57 +43,55 @@
             .filter((a)=> a.name.toLowerCase().includes(this.search.toLocaleLowerCase()))
             .filter((a) => a.product_type.toLowerCase().includes(this.productsSortType))
             .sort((a,b)=> a[field].localeCompare(b[field])*reversed)
-
-            //faire des vérif avec des if
- 
-          // const field= ["AZName", "ZAName"].includes(this.productsSortName) ? "name" : "brand"
-          // const reversed = ["ZAName", "ZABrand"].includes(this.productsSortName)
-          // const filterFunc= (a)=> a.name.toLowerCase().includes(this.search.toLowerCase())
-          // const comparator = (a,b) => a[field].localeCompare(b[field])
-            
-          // let data =[ ...this.cosmeticData]
-          //   console.log(data);
-          // data.filter(filterFunc)
-          // data = data.sort(comparator)
-          // if(reversed)data =data.reverse()
-          // return data
-
-
         }
       },
 
       data(){
         return{
             cosmeticData:[],
-            search: "",
-            productsSortName: "AZName",
-            productsSortType:"all"
+            search: localStorage.getItem("search")||"",
+            productsSortName: localStorage.getItem("productsSortName")||"AZName",
+            productsSortType:localStorage.getItem("productsSortType")||"all"
         }
       },
       created: function(){
         this.retrieveCosmeticData()
+        console.log(this.cosmeticData)
       },
       methods: {
         async retrieveCosmeticData() {
           this.cosmeticData = await getCosmeticData()
-          this.cleanSearch()
-          this.filter()
-        },
-
-        cleanSearch: function(){
-          this.search=""
-        },
-
-        filter: function(){
-          this.cosmeticData = this.cosmeticOrganizedData
-        },
-
+        }
       }
     }
     </script>
 
 <style>
+    h1{
+      justify-content: center;
+      font-size: 60px;
+      font-weight: bold;
+      color: aquamarine;
+      text-align: center;
+    }
+
     .text {
       color: v-bind(color);
     }
+
+    .GalleryOptions{
+      justify-content: center;
+    }
+
+    .CosmeticGallery{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .CosmeticCard{
+      display: inline-grid;
+    }
+
 </style>
