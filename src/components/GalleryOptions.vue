@@ -5,10 +5,10 @@
 
         <label for="product-sort" id="cosmetic-sort"></label>
         <select :value="productsSortName" @input="onProductsSortNameChanged" id="cosmetic-sort">
-          <option value="AZName">Produits de A à Z</option>
-          <option value="ZAName">Produits de Z à A</option>
-          <option value="AZBrand">Marque de A à Z</option>
-          <option value="ZABrand">Marque de Z à A</option>
+          <option value="AZName">Products from A to Z</option>
+          <option value="ZAName">Products from Z to A</option>
+          <option value="AZBrand">Brand from A to Z</option>
+          <option value="ZABrand">Brand from Z to A</option>
         </select>
         <select :value="productsSortType" @input="onProductsSortTypeChanged" id="cosmetic-sort-type">
           <option value="all">All</option>

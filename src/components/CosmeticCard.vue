@@ -3,9 +3,9 @@
     <img class="image_link" v-bind:src="image_link"/>
     <div>
       <h2 class="name">{{name}}</h2>
-      <p class="product_type">{{product_type}}</p>
-      <p class="brand">{{brand}}</p>
-      <p class="price">{{price}}</p>
+      <p class="product_type">Type : {{product_type}}</p>
+      <p class="brand">Brand : {{brand}}</p>
+      <p class="price">Price : {{price}}</p>
     </div>  
   </div>
 </template>
