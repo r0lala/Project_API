@@ -77,14 +77,14 @@ export default{
 
     .GalleryOptions input[type="text"] {
         flex-grow: 1;
-        margin-right: 20px;
+        margin-right: 10px;
         padding: 10px;
-        border-radius: 5px;
+        border-radius: 10px;
         border: 1px solid aquamarine;
     }
 
     .GalleryOptions button {
-        padding: 10px 20px;
+        padding: 10px 15px;
         border-radius: 5px;
         border: none;
         background-color: aquamarine;
@@ -97,7 +97,7 @@ export default{
     }
 
     .GalleryOptions select {
-        margin-left: 20px;
+        margin-left: 15px;
         padding: 10px;
         border-radius: 5px;
         border: 1px solid #ccc;
