@@ -1,19 +1,24 @@
 <template>
-    <h1>CosmetIMAC</h1>
-
-    <p>This project is using an API gathering various cosmetics products.</p>
+    <header>
+        <h1>CosmetIMAC</h1>
+        <p>This project is using an API gathering various cosmetics products.</p>
+    </header>
 </template>
 
 <style scoped>
-    p{
+    header {
+        background-color: #181818;
         text-align: center;
+        padding: 20px;
     }
 
-    h1{
-      justify-content: center;
-      font-size: 60px;
-      font-weight: bold;
-      color: aquamarine;
-      text-align: center;
+    header h1 {
+        font-size: 60px;
+        font-weight: bold;
+        color: aquamarine;
+    }
+
+    header p {
+        color: #d6d6d6;
     }
 </style>

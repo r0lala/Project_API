@@ -66,3 +66,40 @@ export default{
     }
 }
 </script>
+
+<style>
+    .GalleryOptions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .GalleryOptions input[type="text"] {
+        flex-grow: 1;
+        margin-right: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid aquamarine;
+    }
+
+    .GalleryOptions button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: aquamarine;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+    }
+
+    .GalleryOptions button:hover {
+        background-color:aquamarine;
+    }
+
+    .GalleryOptions select {
+        margin-left: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>

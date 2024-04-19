@@ -61,7 +61,6 @@
       },
       created: function(){
         this.retrieveCosmeticData()
-        console.log(this.cosmeticData)
       },
       methods: {
         async retrieveCosmeticData() {
@@ -72,24 +71,20 @@
     </script>
 
 <style>
-
-    .text {
-      color: v-bind(color);
+    .CosmeticGallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
     }
 
-    .GalleryOptions{
-      justify-content: center;
-    }
-
-    .CosmeticGallery{
+    .gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
 
-    .CosmeticCard{
-      display: inline-grid;
-    }
-
 </style>
+

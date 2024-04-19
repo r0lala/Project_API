@@ -24,29 +24,34 @@
   </script>
   
   <style>
-      .CosmeticCard{
-        background-color: rgb(255, 208, 246);
-        color : black;
-        width: 300px;
-        height: 400px;
-        margin : 20px;
-        padding : 20px;
-        border-radius: 20px;
-      }
+  .CosmeticCard {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 208, 246);
+    color : black;
+    width: 300px;
+    height: 400px;
+    margin : 20px;
+    padding : 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 3px aquamarine;
+    transition: 0.5s ease-in-out;
+  }
 
-      .CosmeticCard:hover{
-        background-color: aquamarine;
-        transition:  0.5s ease-in-out;
-      }
+  .CosmeticCard:hover {
+    background-color: aquamarine;
+    box-shadow: 5px 5px 3px rgb(255, 208, 246);
+  }
 
-      img{
-        height: 200px;
-        padding: 10px;
-        margin: auto;
-      }
+  .CosmeticCard img {
+    align-items: center;
+    height: 200px;
+    padding: 10px;
+    margin: auto;
+  }
 
-      h2 {
-        font-size: 20px;
-        font-weight: 900;
-      }
-  </style>
+  .CosmeticCard h2 {
+    font-size: 20px;
+    font-weight: 900;
+  }
+</style>
